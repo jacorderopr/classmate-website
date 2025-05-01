@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: Add base styles or custom component classes here */
+html {
+  scroll-behavior: smooth; /* Ensure smooth scrolling */
+}
+
+body {
+  @apply antialiased; /* Nicer font rendering */
+}

@@ -1,0 +1,3 @@
+node_modules/
+public/dist/output.css # Optional: Ignore if you build on deploy server
+# Add any other files/folders to ignore (e.g., .env, build artifacts)

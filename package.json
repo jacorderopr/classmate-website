@@ -1,0 +1,20 @@
+{
+    "name": "classmate-website",
+    "version": "1.0.0",
+    "description": "Informational website for the ClassMate capstone project.",
+    "main": "index.js",
+    "scripts": {
+      "build:css": "tailwindcss -i ./src/input.css -o ./public/dist/output.css --minify",
+      "watch:css": "tailwindcss -i ./src/input.css -o ./public/dist/output.css --watch"
+    },
+    "keywords": [
+      "capstone",
+      "website",
+      "tailwind"
+    ],
+    "author": "ClassMate Team",
+    "license": "ISC",
+    "devDependencies": {
+      "tailwindcss": "^3.3.0"
+    }
+  }

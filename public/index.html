@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassMate - Capstone Project</title>
+    <meta name="description" content="ClassMate turns lectures into interactive Q&A study companions.">
+    <link href="dist/output.css" rel="stylesheet">
+    <style>
+        /* Optional: Add a subtle texture/noise overlay if desired */
+        /* body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('data:image/svg+xml,...'); // Tiny noise SVG
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 100;
+        } */
+        .hero-bg {
+            background-image: url('assets/lecture-hall.jpg'); /* Replace with your image */
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for contrast */
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="bg-emerald-800 text-stone-100 sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#project-snapshot" class="text-xl font-bold hover:text-stone-300 transition duration-200">ClassMate</a>
+            <!-- Desktop Nav -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#project-snapshot" class="hover:text-stone-300 transition duration-200">Project Snapshot</a></li>
+                <li><a href="#why-it-matters" class="hover:text-stone-300 transition duration-200">Why It Matters</a></li>
+                <li><a href="#objective" class="hover:text-stone-300 transition duration-200">Objective</a></li>
+                <li><a href="#audio-pipeline" class="hover:text-stone-300 transition duration-200">Audio Pipeline</a></li>
+                <li><a href="#chatbot-flow" class="hover:text-stone-300 transition duration-200">Chatbot Flow</a></li>
+                <li><a href="#architecture" class="hover:text-stone-300 transition duration-200">Architecture</a></li>
+                <li><a href="#team-contact" class="hover:text-stone-300 transition duration-200">Team & Contact</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-700">
+            <ul class="flex flex-col items-center py-4 space-y-3">
+                <li><a href="#project-snapshot" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Project Snapshot</a></li>
+                <li><a href="#why-it-matters" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Why It Matters</a></li>
+                <li><a href="#objective" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Objective</a></li>
+                <li><a href="#audio-pipeline" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Audio Pipeline</a></li>
+                <li><a href="#chatbot-flow" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Chatbot Flow</a></li>
+                <li><a href="#architecture" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Architecture</a></li>
+                <li><a href="#team-contact" class="block px-4 py-2 hover:bg-emerald-600 rounded w-full text-center mobile-link">Team & Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Project Snapshot (Hero) -->
+        <section id="project-snapshot" class="relative hero-bg hero-overlay text-stone-100 min-h-[calc(100vh-64px)] flex items-center justify-center text-center p-6">
+            <div class="hero-content flex flex-col items-center">
+                <img src="assets/logo.png" alt="ClassMate Logo" class="w-32 h-32 md:w-48 md:h-48 mb-6 filter drop-shadow-lg">
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4 filter drop-shadow-md">Upload → Ask → Understand</h1>
+                <p class="max-w-2xl text-lg md:text-xl font-light leading-relaxed">
+                    ClassMate turns any 15-minute lecture into an instant Q-and-A study companion for students with diverse learning needs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Shared Section Styling -->
+        <div class="space-y-16 md:space-y-24 py-16 md:py-24 px-6 container mx-auto">
+
+            <!-- 2. Why It Matters -->
+            <section id="why-it-matters" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-8">Why It Matters</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-16 mb-6">
+                    <!-- Old Way -->
+                    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md w-64">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-600 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Clipboard Icon">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                        <span class="font-semibold text-lg text-gray-700">Old Way</span>
+                    </div>
+                     <!-- ClassMate Way -->
+                    <div class="flex flex-col items-center p-6 bg-white rounded-lg shadow-md w-64">
+                         <div class="flex gap-3 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Chat Bubble Icon">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Headphones Icon">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                         </div>
+                        <span class="font-semibold text-lg text-gray-700">ClassMate</span>
+                    </div>
+                </div>
+                <p class="max-w-xl mx-auto text-lg text-gray-600 mb-3">Traditional notes overload some learners.</p>
+                <p class="max-w-xl mx-auto text-lg text-gray-600">ClassMate answers in bite-sized clips, cutting study time.</p>
+            </section>
+
+            <!-- 3. Objective -->
+            <section id="objective" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-8">Objective</h2>
+                 <div class="flex justify-center items-center mb-6">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Target Icon">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                     </svg>
+                 </div>
+                <p class="max-w-xl mx-auto text-lg text-gray-600">Goal: convert each lecture into a chatbot that cites audio snippets for evidence.</p>
+            </section>
+
+            <!-- 4. Audio Pipeline -->
+            <section id="audio-pipeline" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-8">Audio Pipeline</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-4 md:gap-0 mb-6 space-y-4 md:space-y-0">
+                    <!-- Step 1: Transcribe -->
+                    <div class="flex flex-col items-center p-4 bg-blue-100 rounded-lg shadow w-48 h-36 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Microphone Icon">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                        </svg>
+                        <span class="font-medium text-blue-800">Transcribe</span>
+                    </div>
+                    <div class="hidden md:flex items-center px-2 text-gray-400 text-2xl font-bold">→</div>
+                    <!-- Step 2: Chunk -->
+                    <div class="flex flex-col items-center p-4 bg-green-100 rounded-lg shadow w-48 h-36 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Scissors Icon">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M14.41 7.586l-4.828 4.828m0 0l4.828 4.828m-4.828-4.828L5.172 17M9.582 12l4.828-4.828M12 7.5c.966 0 1.75.784 1.75 1.75S12.966 11 12 11s-1.75-.784-1.75-1.75S11.034 7.5 12 7.5zM12 16.5c.966 0 1.75.784 1.75 1.75S12.966 20 12 20s-1.75-.784-1.75-1.75S11.034 16.5 12 16.5z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19.828 9.172L14.41 14.586m0 0l5.418 5.418m-5.418-5.418L21 7.5m-6.582 7.086L9.172 9.172" />
+                        </svg>
+                        <span class="font-medium text-green-800">Chunk</span>
+                    </div>
+                    <div class="hidden md:flex items-center px-2 text-gray-400 text-2xl font-bold">→</div>
+                    <!-- Step 3: Embed -->
+                    <div class="flex flex-col items-center p-4 bg-yellow-100 rounded-lg shadow w-48 h-36 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Vector Grid Icon">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h.01M7 11h.01M12 7h.01M12 3h.01M12 11h.01M17 7h.01M17 3h.01M17 11h.01M7 15h10v4H7v-4z"/>
+                        </svg>
+                        <span class="font-medium text-yellow-800">Embed</span>
+                    </div>
+                    <div class="hidden md:flex items-center px-2 text-gray-400 text-2xl font-bold">→</div>
+                     <!-- Step 4: Upload -->
+                    <div class="flex flex-col items-center p-4 bg-purple-100 rounded-lg shadow w-48 h-36 justify-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Database Icon">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10m16-10v10M4 7a2 2 0 012-2h12a2 2 0 012 2m-4 4a2 2 0 10-4 0 2 2 0 004 0zm-4 4a2 2 0 10-4 0 2 2 0 004 0zM4 7h16v10H4V7z" />
+                         </svg>
+                        <span class="font-medium text-purple-800">Upload</span>
+                    </div>
+                </div>
+                <p class="max-w-xl mx-auto text-lg text-gray-600">The audio goes through these steps to become searchable.</p>
+            </section>
+
+            <!-- 5. Chatbot Flow -->
+            <section id="chatbot-flow" class="text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-8">Chatbot Flow</h2>
+                <div class="flex flex-col md:flex-row justify-center items-center md:items-stretch gap-4 md:gap-0 mb-6 space-y-4 md:space-y-0">
+                    <!-- Step 1: Ask -->
+                    <div class="flex flex-col items-center p-4 bg-cyan-100 rounded-lg shadow w-48 h-36 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Question Mark Icon">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span class="font-medium text-cyan-800">Ask</span>
+                    </div>
+                    <div class="hidden md:flex items-center px-2 text-gray-400 text-2xl font-bold">→</div>
+                    <!-- Step 2: Vectorize -->
+                    <div class="flex flex-col items-center p-4 bg-orange-100 rounded-lg shadow w-48 h-36 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-orange-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Magnet Icon">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /> <!-- Simple lightning bolt as proxy for magnet field/vectorization -->
+                        </svg>
+                        <span class="font-medium text-orange-800">Vectorize</span>
+                    </div>
+                    <div class="hidden md:flex items-center px-2 text-gray-400 text-2xl font-bold">→</div>
+                    <!-- Step 3: Retrieve Clips -->
+                     <div class="flex flex-col items-center p-4 bg-lime-100 rounded-lg shadow w-48 h-36 justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-lime-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Stack Icon">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm4 4h8m-8 4h8" /> <!-- Simple document stack -->
+                        </svg>
+                         <span class="font-medium text-lime-800">Retrieve Clips</span>
+                     </div>
+                    <div class="hidden md:flex items-center px-2 text-gray-400 text-2xl font-bold">→</div>
+                     <!-- Step 4: Answer -->
+                    <div class="flex flex-col items-center p-4 bg-rose-100 rounded-lg shadow w-48 h-36 justify-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-rose-600 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-label="Robot Icon">
+                           <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5v14M8 8l-4 4 4 4m8-8l4 4-4 4" /> <!-- Abstract robot/AI symbol -->
+                         </svg>
+                         <span class="font-medium text-rose-800">Answer</span>
+                     </div>
+                </div>
+                <p class="max-w-xl mx-auto text-lg text-gray-600">Your question finds relevant audio clips to generate an answer.</p>
+            </section>
+
+            <!-- 6. Architecture -->
+            <section id="architecture" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-12">Architecture</h2>
+                <div class="flex justify-center mb-6">
+                    <div class="flex flex-col items-center space-y-1 w-full max-w-md">
+                        <!-- Layer 1: Frontend -->
+                        <div class="bg-sky-500 text-white w-full p-3 text-center rounded-t-md shadow font-medium">Frontend</div>
+                         <div class="text-gray-500 text-2xl font-bold">↓</div>
+                        <!-- Layer 2: API -->
+                        <div class="bg-indigo-500 text-white w-[95%] p-3 text-center shadow font-medium">API</div>
+                         <div class="text-gray-500 text-2xl font-bold">↓</div>
+                        <!-- Layer 3: Processing -->
+                        <div class="bg-purple-500 text-white w-[90%] p-3 text-center shadow font-medium">Processing</div>
+                         <div class="text-gray-500 text-2xl font-bold">↓</div>
+                        <!-- Layer 4: pgvector -->
+                        <div class="bg-emerald-500 text-white w-[85%] p-3 text-center shadow font-medium">pgvector DB</div>
+                         <div class="text-gray-500 text-2xl font-bold">↓</div>
+                         <!-- Layer 5: AI Engine -->
+                        <div class="bg-teal-600 text-white w-[80%] p-3 text-center rounded-b-md shadow font-medium">AI Engine</div>
+                    </div>
+                </div>
+                <p class="max-w-xl mx-auto text-lg text-gray-600 mb-3">The system uses distinct layers for user interaction, logic, data storage, and AI.</p>
+                 <p class="max-w-xl mx-auto text-lg text-gray-600">Layers: Frontend ↠ API ↠ Processing ↠ pgvector ↠ AI engine.</p>
+            </section>
+
+            <!-- 7. Team & Contact -->
+            <section id="team-contact" class="text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-emerald-800 mb-12">Team & Contact</h2>
+                <p class="max-w-xl mx-auto text-lg text-gray-600 mb-10">This capstone project was built by a dedicated four-person crew.</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-3xl mx-auto mb-12">
+                    <!-- Member 1 -->
+                    <div class="flex flex-col items-center">
+                        <div class="w-24 h-24 md:w-32 md:h-32 bg-gray-300 rounded-full mb-3 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-16 md:w-16 text-gray-500" fill="currentColor" viewBox="0 0 16 16" aria-label="Placeholder Avatar 1">
+                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                        </div>
+                        <span class="font-medium text-gray-700">Alice Doe</span>
+                    </div>
+                     <!-- Member 2 -->
+                     <div class="flex flex-col items-center">
+                         <div class="w-24 h-24 md:w-32 md:h-32 bg-gray-300 rounded-full mb-3 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-16 md:w-16 text-gray-500" fill="currentColor" viewBox="0 0 16 16" aria-label="Placeholder Avatar 2">
+                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                         </div>
+                         <span class="font-medium text-gray-700">Bob Smith</span>
+                     </div>
+                     <!-- Member 3 -->
+                     <div class="flex flex-col items-center">
+                         <div class="w-24 h-24 md:w-32 md:h-32 bg-gray-300 rounded-full mb-3 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-16 md:w-16 text-gray-500" fill="currentColor" viewBox="0 0 16 16" aria-label="Placeholder Avatar 3">
+                              <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                         </div>
+                         <span class="font-medium text-gray-700">Charlie P.</span>
+                     </div>
+                     <!-- Member 4 -->
+                     <div class="flex flex-col items-center">
+                         <div class="w-24 h-24 md:w-32 md:h-32 bg-gray-300 rounded-full mb-3 flex items-center justify-center">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 md:h-16 md:w-16 text-gray-500" fill="currentColor" viewBox="0 0 16 16" aria-label="Placeholder Avatar 4">
+                               <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                             </svg>
+                         </div>
+                         <span class="font-medium text-gray-700">Dana Lee</span>
+                     </div>
+                </div>
+                <div class="flex justify-center items-center gap-3">
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                     </svg>
+                    <p class="text-lg text-gray-600">
+                        Reach us at: <a href="mailto:classmate-team@example.com" class="text-emerald-700 hover:text-emerald-900 font-medium underline">classmate-team@example.com</a>
+                    </p>
+                </div>
+            </section>
+
+        </div> <!-- End Shared Section Styling Wrapper -->
+
+    </main>
+
+    <footer class="bg-emerald-900 text-stone-300 text-center p-4 mt-16 md:mt-24">
+        <p class="text-sm">© 2025 ClassMate Capstone Team. University Name.</p> <!-- Adjust year/name -->
+    </footer>
+
+    <script src="../src/script.js"></script>
+</body>
+</html>
